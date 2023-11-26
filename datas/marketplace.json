@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Tokopedia",
+    "direct_url": "www.tokopedia.com",
+    "image_url": "/assets/images/tokopedia.png"
+  },
+  {
+    "name": "Lazada",
+    "direct_url": "www.lazada.com",
+    "image_url": "/assets/images/lazada.png"
+  },
+  {
+    "name": "Shopee",
+    "direct_url": "www.shopee.com",
+    "image_url": "/assets/images/shopee.png"
+  }
+]
