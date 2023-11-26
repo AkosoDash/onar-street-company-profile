@@ -11,9 +11,10 @@ export default function Store() {
         <CarouselComponent />
       </div>
       <div className="container p-4 mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4">
-        {datas.map((data, index) => {
+        {datas.map((data, key) => {
           return (
             <CardStoreComponent
+              uniqueKey={key}
               name={data.name}
               url_link={data.direct_url}
               img_link={data.image_url}

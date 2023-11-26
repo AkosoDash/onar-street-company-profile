@@ -1,11 +1,40 @@
-// import {} from "daisyui";
-const NavbarComponent = () => {
+"use client";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStore } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
+import datas from "../datas/navigation.json";
+
+const NavbarForMobile = ({ children }) => {};
+
+const NavbarForDesktop = ({ children }) => {};
+
+const NavbarItem = ({ title, icon, asset_url, direct_url, nav_position }) => {
   return (
     <>
-      <div className="navbar bg-base-100">
+      {nav_position === "logo" ? (
+        <Link href={direct_url}>
+          <img src={asset_url} alt={title} className="bg-base-300 rounded-xl" />
+        </Link>
+      ) : nav_position === "marketplace" ? (
+        <Link href={direct_url}>{title}</Link>
+      ) : (
+        <Link href={direct_url}>
+          <h4 className="font-bold uppercase tracking-widest">{title}</h4>
+        </Link>
+      )}
+    </>
+  );
+};
+
+const NavbarComponent = () => {
+  const logoData = datas.find((data) => data.nav_role === "logo");
+  const marketPlaceData = datas.find((data) => data.nav_role === "marketplace");
+  return (
+    <>
+      <div className="navbar bg-base-300 p-4 lg:px-12 lg:py-4">
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <label tabIndex={0} className="btn btn-ghost pl-0 lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -23,54 +52,64 @@ const NavbarComponent = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] shadow bg-base-300 rounded-box w-full"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {datas.map((data, key) => {
+                if (data.nav_role === "nav-item") {
+                  return (
+                    <li className="my-2 ">
+                      <NavbarItem
+                        title={data.title}
+                        direct_url={data.direct_url}
+                      />
+                    </li>
+                  );
+                }
+              })}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <Link
+            href={logoData.direct_url}
+            className="flex flex-row justify-center items-center pr-4 rounded-xl"
+          >
+            <img
+              src={logoData.asset_url}
+              alt={logoData.title}
+              className="rounded-xl w-8"
+            />
+            <img
+              src="/assets/logo/logo-with-text.png"
+              alt={logoData.title}
+              className="ml-4 w-16 hidden lg:block md:block"
+            />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li tabIndex={0}>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
+          <ul className="menu menu-horizontal">
+            {datas.map((data, key) => {
+              if (data.nav_role === "nav-item") {
+                return (
+                  <li className="mx-2">
+                    <NavbarItem
+                      title={data.title}
+                      direct_url={data.direct_url}
+                    />
                   </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+                );
+              }
+            })}
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <Link
+            href={marketPlaceData.direct_url}
+            className="flex flex-row justify-center items-center bg-white px-4 py-2 rounded-lg"
+          >
+            <FontAwesomeIcon icon={faStore} color="black" />
+            <h4 className="font-semibold text-black uppercase ml-3 hidden lg:flex md:flex">
+              {marketPlaceData.title}
+            </h4>
+          </Link>
         </div>
       </div>
     </>
