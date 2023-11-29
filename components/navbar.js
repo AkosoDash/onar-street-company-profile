@@ -11,17 +11,11 @@ const NavbarForDesktop = ({ children }) => {};
 const NavbarItem = ({ title, icon, asset_url, direct_url, nav_position }) => {
   return (
     <>
-      {nav_position === "logo" ? (
-        <Link href={direct_url}>
-          <img src={asset_url} alt={title} className="bg-base-300 rounded-xl" />
-        </Link>
-      ) : nav_position === "marketplace" ? (
-        <Link href={direct_url}>{title}</Link>
-      ) : (
-        <Link href={direct_url}>
-          <h4 className="font-bold uppercase tracking-widest">{title}</h4>
-        </Link>
-      )}
+      <Link href={direct_url}>
+        <h4 className="font-bold uppercase tracking-widest color-white">
+          {title}
+        </h4>
+      </Link>
     </>
   );
 };
@@ -31,7 +25,7 @@ const NavbarComponent = () => {
   const marketPlaceData = datas.find((data) => data.nav_role === "marketplace");
   return (
     <>
-      <div className="navbar bg-base-300 p-4 lg:px-12 lg:py-4">
+      <div className="navbar fixed top-0 bg-gradient-to-r z-40 shadow-xl from-black to-zinc-800 p-4 lg:px-12 lg:py-4">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost pl-0 lg:hidden">
@@ -57,7 +51,7 @@ const NavbarComponent = () => {
               {datas.map((data, key) => {
                 if (data.nav_role === "nav-item") {
                   return (
-                    <li className="my-2 ">
+                    <li className="my-2">
                       <NavbarItem
                         title={data.title}
                         direct_url={data.direct_url}
@@ -103,7 +97,7 @@ const NavbarComponent = () => {
         <div className="navbar-end">
           <Link
             href={marketPlaceData.direct_url}
-            className="flex flex-row justify-center items-center bg-white px-4 py-2 rounded-lg"
+            className="flex flex-row justify-center items-center bg-white px-4 py-2 shadow-lg"
           >
             <FontAwesomeIcon icon={faStore} color="black" />
             <h4 className="font-semibold text-black uppercase ml-3 hidden lg:flex md:flex">
