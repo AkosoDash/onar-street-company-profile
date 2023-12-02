@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStore } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import datas from "../datas/navigation.json";
+import useScroll from "../components/services/useScroll";
 
 const NavbarForMobile = ({ children }) => {};
 
@@ -12,7 +13,7 @@ const NavbarItem = ({ title, icon, asset_url, direct_url, nav_position }) => {
   return (
     <>
       <Link href={direct_url}>
-        <h4 className="font-bold uppercase tracking-widest color-white">
+        <h4 className="font-bold uppercase tracking-widest text-white">
           {title}
         </h4>
       </Link>
@@ -23,9 +24,17 @@ const NavbarItem = ({ title, icon, asset_url, direct_url, nav_position }) => {
 const NavbarComponent = () => {
   const logoData = datas.find((data) => data.nav_role === "logo");
   const marketPlaceData = datas.find((data) => data.nav_role === "marketplace");
+  const yPosition = useScroll().y;
+
   return (
     <>
-      <div className="navbar fixed top-0 bg-gradient-to-r z-40 shadow-xl from-black to-zinc-800 p-4 lg:px-12 lg:py-4">
+      <div
+        className={
+          yPosition <= 50
+            ? "navbar fixed top-0  z-40 bg-none p-4 lg:px-12 lg:py-4 duration-500"
+            : "navbar fixed top-0  z-40 shadow-xl  bg-gradient-to-r from-black to-zinc-800 p-4 lg:px-12 lg:py-4 duration-500"
+        }
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost pl-0 lg:hidden">
