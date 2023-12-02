@@ -3,7 +3,7 @@ const MainContainer = ({ children, bgColor }) => {
     <div
       className={
         bgColor === "dark"
-          ? "bg-dark h-screen flex justify-center items-center"
+          ? "bg-black h-screen flex justify-center items-center"
           : "bg-slate-50 h-screen flex justify-center items-center"
       }
     >
