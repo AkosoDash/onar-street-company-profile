@@ -31,54 +31,90 @@ export default function Home() {
     <>
       <NavbarComponent />
       <MainContainer bgColor={"dark"}>
-        <h1 className="text-white">Selamat Sore Sobat Legend</h1>
-      </MainContainer>
-      <MainContainer bgColor={"white"}>
-        <div className="flex w-screen flex-col justify-around items-center">
-          <h1 className="text-black text-4xl font-black uppercase antialiased ">
-            Penjualan Terbaik
-          </h1>
-          <span className=" text-xl text-black mt-4 text-center w-1/2">
-            Ini olang punya produk mantap jiwa looo, buruan diorder coy!!!
-          </span>
-          <div className="flex flex-row justify-center gap-24 items-center w-screen mt-16">
-            <div className="w-72 h-96 rounded-xl flex flex-col items-center justify-around">
-              <img
-                className="w-72 h-72 rounded-xl shadow-2xl"
-                src="/assets/images/shoes/sandal-pria-1.jpeg"
-                alt="Foto Sandal Pria"
-              />
-              <div className="h-16 bg-white w-72 flex flex-col justify-center items-center shadow-2xl rounded-xl">
-                <h1 className="text-black font-black">Sandal Pria Mantap</h1>
-                <h3 className="text-black">Rp. 500.000,-</h3>
-              </div>
-            </div>
-            <div className="w-72 h-96 rounded-xl flex flex-col items-center justify-around">
-              <img
-                className="w-72 h-72 rounded-xl shadow-2xl"
-                src="/assets/images/shoes/sepatu-olahraga-1.jpeg"
-                alt="Foto Sepatu Olahraga"
-              />
-              <div className="h-16 bg-white w-72 flex flex-col justify-center items-center shadow-2xl rounded-xl">
-                <h1 className="text-black font-black">Sepatu Running Ondewe</h1>
-                <h3 className="text-black">Rp. 500.000,-</h3>
-              </div>
-            </div>
-            <div className="w-72 h-96 rounded-xl flex flex-col items-center justify-around">
-              <img
-                className="w-72 h-72 rounded-xl shadow-2xl"
-                src="/assets/images/shoes/sandal-wanita-2.jpeg"
-                alt="Foto Sandal Pria"
-              />
-              <div className="h-16 bg-white w-72 flex flex-col justify-center items-center shadow-2xl rounded-xl">
-                <h1 className="text-black font-black">Sandal Wanita Riyadin</h1>
-                <h3 className="text-black">Rp. 500.000,-</h3>
-              </div>
-            </div>
+      <div className="hero min-h-screen" style={{backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)'}}>
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="hero-content text-center text-neutral-content">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">Elegan, Nyaman, Berkualitas</h1>
+            <p className="mb-5">Selamat datang di Onar Street, tempatnya gaya dan kenyamanan. Temukan koleksi terbaik kami yang menggabungkan desain modern dengan kualitas tinggi. Setiap langkah Anda adalah pernyataan fashion yang tak terlupakan. Jelajahi sekarang untuk menemukan gaya sejati Anda.</p>
+            <button className="btn btn-black">Belanja Sekarang!</button>
           </div>
         </div>
+      </div>
       </MainContainer>
-      <MainContainer bgColor={"dark"}>
+<MainContainer bgColor={"white"}>
+  <div className="flex flex-col justify-around items-center md:px-6 lg:px-8">
+    <h1 className="text-black text-4xl font-black uppercase antialiased text-center mb-4 md:text-5xl">
+      Penjualan Terbaik
+    </h1>
+    <span className="text-xl text-black text-center w-full md:w-1/2 mb-8">
+      Berikut merupakan beberapa produk terlaris kami.
+    </span>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
+      {/* Produk 1 */}
+      <div className="mb-8">
+        <div className="rounded-xl overflow-hidden">
+          <img
+            className="w-full h-72 md:h-96 rounded-xl shadow-2xl object-cover"
+            src="/assets/images/shoes/sandal-pria-1.jpeg"
+            alt="Foto Sandal Pria"
+          />
+        </div>
+        <div className="h-16 bg-white w-full flex flex-col justify-center items-center text-center shadow-2xl rounded-xl mt-4">
+          <h1 className="text-black font-black text-lg md:text-xl">Sandal Slide Slop Pria - Hitam </h1>
+          <h3 className="text-black">Rp. 88.500,-</h3>
+        </div>
+      </div>
+
+      {/* Produk 2 */}
+      <div className="mb-8">
+        <div className="rounded-xl overflow-hidden">
+          <img
+            className="w-full h-72 md:h-96 rounded-xl shadow-2xl object-cover"
+            src="/assets/images/shoes/sepatu-anak-2.jpeg"
+            alt="Foto Sepatu Anak"
+          />
+        </div>
+        <div className="h-16 bg-white w-full flex flex-col justify-center items-center text-center shadow-2xl rounded-xl mt-4">
+          <h1 className="text-black font-black text-lg md:text-xl">Sepatu Anak-Anak Perempuan</h1>
+          <h3 className="text-black">Rp. 84.500,-</h3>
+        </div>
+      </div>
+
+      {/* Produk 3 */}
+      <div className="mb-8">
+        <div className="rounded-xl overflow-hidden">
+          <img
+            className="w-full h-72 md:h-96 rounded-xl shadow-2xl object-cover"
+            src="/assets/images/shoes/sepatu-olahraga-2.jpeg"
+            alt="Foto sepatu olahraga wanita"
+          />
+        </div>
+        <div className="h-16 bg-white w-full flex flex-col justify-center items-center text-center shadow-2xl rounded-xl mt-4">
+          <h1 className="text-black font-black text-lg md:text-xl">Sepatu Voli Wanita</h1>
+          <h3 className="text-black">Rp. 118.500,-</h3>
+        </div>
+      </div>
+
+       {/* Produk 3 */}
+      <div className="mb-8">
+        <div className="rounded-xl overflow-hidden">
+          <img
+            className="w-full h-72 md:h-96 rounded-xl shadow-2xl object-cover"
+            src="/assets/images/shoes/sepatu-olahraga-2.jpeg"
+            alt="Foto sepatu olahraga wanita"
+          />
+        </div>
+        <div className="h-16 bg-white w-full flex flex-col justify-center items-center text-center shadow-2xl rounded-xl mt-4">
+          <h1 className="text-black font-black text-lg md:text-xl">Sepatu Voli Wanita</h1>
+          <h3 className="text-black">Rp. 118.500,-</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainContainer>
+
+      {/* <MainContainer bgColor={"dark"}>
         <div className="flex flex-col h-screen justify-center gap-16 items-center">
           <div className="w-screen  h-3/6 flex flex-row items-end justify-end">
             <div className="flex flex-row justify-center gap-16 items-center">
@@ -120,7 +156,7 @@ export default function Home() {
             })}
           </div>
         </div>
-      </MainContainer>
+      </MainContainer> */}
     </>
   );
 }
