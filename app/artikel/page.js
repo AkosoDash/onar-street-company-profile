@@ -1,11 +1,12 @@
 "use client";
 import CarouselComponent from "../../components/carousel";
 import CardStoreComponent from "../../components/card_store";
-import NavbarComponent from "../../components/navbar";
+import NavbarBlackComponent from "../../components/navbar-black";
 import datas from "../../datas/marketplace.json";
 import MainContainer from "../../components/mainContainer";
 import { useState } from "react";
 import Link from "next/link";
+import HFullContainer from "@/components/HFullContainer";
 
 export default function Store() {
     const articles = [
@@ -32,78 +33,65 @@ export default function Store() {
       const articleShow = articles[articleSelected];
   return (
     <>
-      <NavbarComponent />
-      <MainContainer bgColor={"white"}>
-        <div className="flex w-screen flex-col justify-around items-center mt-18 mb-0">
-          <h1 className="text-black text-4xl font-black uppercase antialiased ">
+      <NavbarBlackComponent />
+      <HFullContainer bgColor={"white"}>
+        <div className="flex w-screen flex-col justify-around items-center mt-32 mb-0">
+          <h1 className="text-black text-4xl font-black uppercase antialiased text-center">
             New Artikel Onar Street telah Diluncurkan
           </h1>
           <span className=" text-xl text-neutral-400 mt-4 text-center w-1/2">
             New Shoes
           </span>
-          <div className="flex flex-row justify-center gap-24 items-center w-screen mt-16">
-            <div className="w-96 h-96 rounded-xl flex flex-col items-center justify-around">
+          <div className="flex flex-row justify-center gap-24 items-center w-screen">
+            <div className="w-full h-full rounded-xl flex flex-col items-center justify-around p-8">
               <img
-                className="w-96 h-96 rounded-xl shadow-2xl"
+                className="w-96 h-full rounded-xl shadow-2xl"
                 src="/assets/images/shoes/sandal-wanita-2.jpeg"
                 alt="Foto Sandal Pria"
               />
             </div>
           </div>
         </div>
-      </MainContainer >
+      </HFullContainer >
       <div className="static p-10">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
-      <MainContainer bgColor={"dark"}>
-        <div className="flex flex-col h-screen justify-center gap-16 items-center">
-        <h1 className="text-white text-4xl font-black uppercase antialiased ">
+      <HFullContainer>
+      <div className="flex flex-col justify-around items-center md:px-8 lg:px-8">
+          <h1 className="text-black text-4xl font-black uppercase antialiased text-center mb-4 md:text-4xl mt-10">
             Artikel Lainnya
-        </h1>
-          <div className="w-screen  h-3/6 flex flex-row items-end justify-end">
-            <div className="flex flex-row justify-center gap-16 items-center">
-              <img
-                className="w-96 h-96 bg-white duration-200"
-                src={articleShow.asset_url}
-              />
-              <div className="flex w-1/2 flex-col justify-start items-start px-8">
-                <span className="text-4xl text-white uppercase font-bold transition:all duration-200">
-                  {articleShow.title}
-                </span>
-                <p className="text-white w-full my-4 transition:all duration-200">
-                  {articleShow.description}
-                </p>
-                <Link
-                  href={"/"}
-                  className="bg-dark hover:bg-white border border-3 border-white px-8 py-2 rounded-md text-white hover:text-black duration-300"
-                >
-                  Baca Selengkapnya...
-                </Link>
+          </h1>
+          <div class="grid gap-4 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1">
+            <div>
+              <div className="card lg:card-side bg-base-100 shadow-xl m-8">
+                <figure><img src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album"/></figure>
+                <div className="card-body">
+                  <h2 className="card-title">New album is released!</h2>
+                  <p>Click the button to listen on Spotiwhy app.</p>
+                  <div className="card-actions justify-end">
+                    <button className="btn btn-primary">Listen</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="card lg:card-side bg-base-100 shadow-xl m-8">
+                <figure><img src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album"/></figure>
+                <div className="card-body">
+                  <h2 className="card-title">New album is released!</h2>
+                  <p>Click the button to listen on Spotiwhy app.</p>
+                  <div className="card-actions justify-end">
+                    <button className="btn btn-primary">Listen</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="w-screen flex flex-row items-center justify-center">
-            {articles.map((data, key) => {
-              return (
-                <button
-                  key={key}
-                  onClick={() => setArticleSelected(key)}
-                  className={
-                    articleSelected === key
-                      ? "mx-2 px-4 py-2 rounded-md text-black font-semibold bg-white duration-200"
-                      : "mx-2 px-4 py-2 rounded-md text-white font-semibold duration-200"
-                  }
-                >
-                  {key + 1}
-                </button>
-              );
-            })}
-          </div>
         </div>
-      </MainContainer>
+      </HFullContainer>
     </>
   );
 }

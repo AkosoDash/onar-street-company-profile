@@ -21,7 +21,7 @@ const NavbarItem = ({ title, icon, asset_url, direct_url, nav_position }) => {
   );
 };
 
-const NavbarComponent = () => {
+const NavbarBlackComponent = () => {
   const logoData = datas.find((data) => data.nav_role === "logo");
   const marketPlaceData = datas.find((data) => data.nav_role === "marketplace");
   const yPosition = useScroll().y;
@@ -31,8 +31,8 @@ const NavbarComponent = () => {
       <div
         className={
           yPosition <= 50
-            ? "navbar fixed top-0  z-40 bg-none p-4 lg:px-12 lg:py-4 duration-500"
-            : "navbar fixed top-0  z-40 shadow-xl  bg-gradient-to-r from-black to-zinc-800 p-4 lg:px-12 lg:py-4 duration-500"
+            ? "navbar fixed mb-8 z-40 bg-black p-4 lg:px-12 lg:py-4 duration-500"
+            : "navbar fixed mb-8 z-40 shadow-xl bg-black from-black to-zinc-800 p-4 lg:px-12 lg:py-4 "
         }
       >
         <div className="navbar-start">
@@ -119,4 +119,4 @@ const NavbarComponent = () => {
   );
 };
 
-export default NavbarComponent;
+export default NavbarBlackComponent;

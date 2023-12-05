@@ -6,7 +6,7 @@ const CardStoreComponent = ({ uniqueKey, name, url_link, img_link }) => {
       <a key={uniqueKey} href={`https://${url_link}`} target="_blank">
         <img src={img_link} alt={name} className=" rounded-xl" />
         <div className="card-body items-center text-center">
-          <h2 className="card-title">{name}</h2>
+          <h2 className="card-title text-3xl max-md:text-lg">{name}</h2>
         </div>
       </a>
     </div>

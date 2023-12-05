@@ -1,16 +1,18 @@
 import CarouselComponent from "../../components/carousel";
 import CardStoreComponent from "../../components/card_store";
-import NavbarComponent from "../../components/navbar";
-import MainContainer from "../../components/mainContainer";
+import NavbarBlackComponent from "../../components/navbar-black";
+import HFullContainer from "../../components/HFullContainer";
 import datas from "../../datas/marketplace.json";
 
 export default function Store() {
   return (
     <>
-      <NavbarComponent />
-      <div className="container p-4 mx-auto mt-32">
-        <CarouselComponent />
-      </div>
+      <NavbarBlackComponent/>
+      <HFullContainer>
+        <div className="mt-24 px-4 max-md:mt-24">
+          <CarouselComponent />
+        </div>
+      </HFullContainer>
       <div className="container p-4 mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4">
         {datas.map((data, key) => {
           return (
