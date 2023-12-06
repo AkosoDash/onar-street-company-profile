@@ -1,18 +1,18 @@
 [
   {
     "name": "Tokopedia",
-    "direct_url": "www.tokopedia.com",
+    "direct_url": "https://tokopedia.link/bSfxrUwcgEb",
     "image_url": "/assets/images/tokopedia.png"
   },
   {
-    "name": "Lazada",
-    "direct_url": "www.lazada.com",
-    "image_url": "/assets/images/lazada.png"
+    "name": "Shopee",
+    "direct_url": "http://shopee.co.id/onarstreet_officialshop",
+    "image_url": "/assets/images/shopee.png"
   },
   {
-    "name": "Shopee",
-    "direct_url": "www.shopee.com",
-    "image_url": "/assets/images/shopee.png"
+    "name": "Lazada",
+    "direct_url": "https://s.lazada.co.id/s.NoXxc",
+    "image_url": "/assets/images/lazada.png"
   },
   {
     "name": "Pesan Via Whatsapp",
