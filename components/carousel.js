@@ -1,33 +1,26 @@
 // import {} from "daisyui";
-const CarouselComponent = ({ children }) => {
+const CarouselComponent = ({ data, isLoaded }) => {
+  console.log({ data: data });
   return (
     <>
-      <div className="card w-full bg-base-100 shadow-xl">
+      <div className="card w-full h-[24rem] bg-base-100 shadow-xl">
         <div className="carousel w-full">
-          <div id="item1" className="carousel-item w-full card">
-            <img
-              src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
-              className="card w-full"
-            />
-          </div>
-          <div id="item2" className="carousel-item w-full card">
-            <img
-              src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg"
-              className="card w-full"
-            />
-          </div>
-          <div id="item3" className="carousel-item w-full card">
-            <img
-              src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg"
-              className="card w-full"
-            />
-          </div>
-          <div id="item4" className="carousel-item w-full card">
-            <img
-              src="https://daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg"
-              className="card w-full"
-            />
-          </div>
+          {data.length === 0 && isLoaded === false
+            ? "Data sedang dimuat"
+            : data.map((data, key) => {
+                return (
+                  <div
+                    key={key}
+                    id={`item${++key}`}
+                    className="carousel-item w-full card"
+                  >
+                    <img
+                      src={data.file_gambar}
+                      className="card w-full h-full"
+                    />
+                  </div>
+                );
+              })}
         </div>
       </div>
     </>

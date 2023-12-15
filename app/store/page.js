@@ -1,16 +1,40 @@
+"use client";
 import CarouselComponent from "../../components/carousel";
 import CardStoreComponent from "../../components/card_store";
 import NavbarBlackComponent from "../../components/navbar-black";
 import HFullContainer from "../../components/HFullContainer";
 import datas from "../../datas/marketplace.json";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Store() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [bannerDatas, setBannerDatas] = useState([]);
+
+  const getBannerDatas = async () => {
+    try {
+      const response = await axios.get(
+        "https://api.onarstreet.co.id/api/banner"
+      );
+      const datas = await response.data.data;
+      setBannerDatas(datas);
+      setIsLoaded(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getBannerDatas();
+    console.log(bannerDatas);
+  }, [isLoaded]);
+
   return (
     <>
-      <NavbarBlackComponent/>
+      <NavbarBlackComponent />
       <HFullContainer>
         <div className="mt-24 px-4 max-md:mt-24">
-          <CarouselComponent />
+          <CarouselComponent data={bannerDatas} isLoaded={isLoaded} />
         </div>
       </HFullContainer>
       <div className="container p-4 mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4">
