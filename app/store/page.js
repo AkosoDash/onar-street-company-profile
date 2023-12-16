@@ -33,8 +33,8 @@ export default function Store() {
     <>
       <NavbarBlackComponent />
       <HFullContainer>
-        <div className="mt-24 px-4 max-md:mt-24">
-          <CarouselComponent data={bannerDatas} isLoaded={isLoaded} />
+        <div className="mt-24 px-4 max-md:mt-24 text-center flex items-center justify-center h-3/4">
+            <CarouselComponent data={bannerDatas} isLoaded={isLoaded} />
         </div>
       </HFullContainer>
       <div className="container p-4 mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4">

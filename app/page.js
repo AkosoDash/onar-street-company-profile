@@ -2,34 +2,38 @@
 import NavbarComponent from "../components/navbar";
 import MainContainer from "../components/mainContainer";
 import HFullContainer from "../components/HFullContainer";
+import CardHomeArtikelComponent from "../components/card-home-artikel";
 import datas from "../datas/navigation.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Link from "next/link";
 
 export default function Home() {
-  const articles = [
-    {
-      title: "Sepatu Baru Part 1",
-      description:
-        "Tak hanya itu, sepatu ini tidak gentar menghadapi segala cuaca, memberikan perlindungan optimal dan ketangguhan saat Anda menaklukkan rintangan. Dengan sentuhan gaya modern yang elegan, sepatu ini bukan hanya alat olahraga, tapi juga aksesori penunjang penampilan Anda di setiap kesempatan.",
-      asset_url: "/assets/images/shoes/sepatu-olahraga-2.jpeg",
-    },
-    {
-      title: "Sepatu Baru Part 2",
-      description:
-        "Tak hanya itu, sepatu ini tidak gentar menghadapi segala cuaca, memberikan perlindungan optimal dan ketangguhan saat Anda menaklukkan rintangan. Dengan sentuhan gaya modern yang elegan, sepatu ini bukan hanya alat olahraga, tapi juga aksesori penunjang penampilan Anda di setiap kesempatan.",
-      asset_url: "/assets/images/shoes/sepatu-olahraga-3.jpeg",
-    },
-    {
-      title: "Sepatu Baru Part 3",
-      description:
-        "Tak hanya itu, sepatu ini tidak gentar menghadapi segala cuaca, memberikan perlindungan optimal dan ketangguhan saat Anda menaklukkan rintangan. Dengan sentuhan gaya modern yang elegan, sepatu ini bukan hanya alat olahraga, tapi juga aksesori penunjang penampilan Anda di setiap kesempatan.",
-      asset_url: "/assets/images/shoes/sepatu-olahraga-4.jpeg",
-    },
-  ];
-  const [articleSelected, setArticleSelected] = useState(0);
-  const articleShow = articles[articleSelected];
   const marketPlaceData = datas.find((data) => data.nav_role === "marketplace");
+
+
+
+  const getArtikelDatas = async () => {
+    try {
+      const response = await axios.get(
+        "https://api.onarstreet.co.id/api/blog"
+      );
+      const data = response.data.data;
+      setArtikelDatas(data);
+      setIsLoaded(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [artikelDatas, setArtikelDatas] = useState([]);
+  const [artikelSelected, setArtikelSelected] = useState(0);
+  const artikelShow = artikelDatas[artikelSelected];
+
+  useEffect(() => {
+    getArtikelDatas();
+  }, []);
   return (
     <>
       <NavbarComponent />
@@ -123,91 +127,52 @@ export default function Home() {
         </div>
       </HFullContainer>
 
-      {/* <MainContainer bgColor={"dark"}>
-        <div className="flex flex-col h-screen justify-center gap-16 items-center">
-          <div className="w-screen  h-3/6 flex flex-row items-end justify-end">
-            <div className="flex flex-row justify-center gap-16 items-center">
-              <img
-                className="w-96 h-96 bg-white duration-200"
-                src={articleShow.asset_url}
-              />
-              <div className="flex w-1/2 flex-col justify-start items-start px-8">
-                <span className="text-4xl text-white uppercase font-bold transition:all duration-200">
-                  {articleShow.title}
-                </span>
-                <p className="text-white w-full my-4 transition:all duration-200">
-                  {articleShow.description}
-                </p>
-                <Link
-                  href={"/"}
-                  className="bg-dark hover:bg-white border border-3 border-white px-8 py-2 rounded-md text-white hover:text-black duration-300"
-                >
-                  Baca Selengkapnya...
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="w-screen flex flex-row items-center justify-center">
-            {articles.map((data, key) => {
-              return (
-                <button
-                  key={key}
-                  onClick={() => setArticleSelected(key)}
-                  className={
-                    articleSelected === key
-                      ? "mx-2 px-4 py-2 rounded-md text-black font-semibold bg-white duration-200"
-                      : "mx-2 px-4 py-2 rounded-md text-white font-semibold duration-200"
-                  }
-                >
-                  {key + 1}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </MainContainer> */}
-<HFullContainer bgColor={"dark"}>
-      <div className="flex flex-col justify-around items-center md:px-0 lg:px-0">
+      <HFullContainer bgColor={"dark"}>
+        <div className="flex flex-col justify-around items-center md:px-0 lg:px-0">
           <h1 className="text-white text-4xl font-black uppercase antialiased text-center mb-4 md:text-4xl mt-10">
             Artikel Lainnya
           </h1>
-          <div class="grid gap-4 grid-cols-1">
+          <div className="grid gap-4 grid-cols-1 w-full place-content-center items-center justify-center">
             <div>
-              <div className="card lg:card-side bg-base-100 shadow-xl h-full mx-8">
-                <figure><img src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album" className="w-full"/></figure>
-                <div className="card-body w-auto lg:w-96">
-                  <h2 className="card-title">{articleShow.title}</h2>
-                  <p className="max-md:text-sm">{articleShow.description}.</p>
-                  <div className="card-actions justify-end">
-                    <Link
-                      href={"/"}
-                    >
-                      <button className="btn btn-neutral">Baca Selengkapnya</button>
-                    </Link>
+            {artikelDatas.length === 0 && !isLoaded ? (
+                "Data sedang dimuat"
+              ) : (
+                <div
+                  className="card lg:card-side bg-base-100 shadow-xl lg:mx-40 md:mx-8 max-sm:mx-8 max-md:mx-8"
+                  id={`item${artikelSelected + 1}`}
+                >
+                  <figure className="w-full">
+                    <img src={artikelShow.file_gambar} alt="Album" className="w-full h-full object-center"/>
+                  </figure>
+                  <div className="card-body w-full">
+                    <h2 className="card-title">{artikelShow.judul}</h2>
+                    <p className="max-md:text-sm overflow-hidden line-clamp-6 max-md:line-clamp-3">{artikelShow.isi}.</p>
+                    <div className="card-actions justify-end lg:mt-10">
+                      <Link href={`/artikel/${artikelShow.slug}`}>
+                        <button className="btn btn-neutral">Baca Selengkapnya</button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
-          </div>
-          <div className="w-screen flex flex-row items-center justify-center mt-8 mb-8">
-            {articles.map((data, key) => {
-              return (
+            <div className="w-screen flex flex-row items-center justify-center mt-8 mb-8">
+              {artikelDatas.map((data, key) => (
                 <button
                   key={key}
-                  onClick={() => setArticleSelected(key)}
+                  onClick={() => setArtikelSelected(key)}
                   className={
-                    articleSelected === key
+                    artikelSelected === key
                       ? "mx-2 px-4 py-2 rounded-md text-black font-semibold bg-white duration-200"
                       : "mx-2 px-4 py-2 rounded-md text-white font-semibold duration-200"
                   }
                 >
                   {key + 1}
                 </button>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
-      
       </HFullContainer>
       <HFullContainer>
       <footer className="footer items-center p-4 bg-black text-neutral-content">
