@@ -35,7 +35,7 @@ export default function Store() {
       <NavbarBlackComponent />
       <HFullContainer>
         <div className="flex w-screen flex-col justify-around items-center mt-32 mb-0 bg-white">
-          <h1 className="text-black text-8xl font-black uppercase antialiased text-center mb-4 md:text-4xl mb-20">
+          <h1 className="text-black text-6xl font-black uppercase antialiased text-center mb-4 max-md:text-4xl max-sm:text-4xl mb-20">
             Artikel Kami
           </h1>
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full px-6 max-sm:grid-cols-1">
