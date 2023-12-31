@@ -15,9 +15,7 @@ export default function Store() {
 
   const getArtikelDatas = async () => {
     try {
-      const response = await axios.get(
-        "https://api.onarstreet.co.id/api/blog"
-      );
+      const response = await axios.get("https://api.onarstreet.co.id/api/blog");
       const datas = await response.data.data;
       setArtikelDatas(datas);
       setIsLoaded(true);
@@ -38,11 +36,11 @@ export default function Store() {
           <h1 className="text-black text-6xl font-black uppercase antialiased text-center mb-4 max-md:text-4xl max-sm:text-4xl mb-20">
             Artikel Kami
           </h1>
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full px-6 max-sm:grid-cols-1">
-        <CardArtikelComponent data={artikelDatas} isLoaded={isLoaded}/>
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full px-6 max-sm:grid-cols-1">
+            <CardArtikelComponent data={artikelDatas} isLoaded={isLoaded} />
+          </div>
         </div>
-        </div>
-      </HFullContainer >
+      </HFullContainer>
     </>
   );
 }
